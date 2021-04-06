@@ -7,14 +7,14 @@ function sendRequest(method, url, body = null) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then(response => {   
-        if(response.ok){
-            return response.json()    
+    }).then(response => {
+        if (response.ok) {
+            return response.json()
         }
-                                                        // Способ обработки ошибки
-        return response.json().then(error=>{
+        // Способ обработки ошибки
+        return response.json().then(e => {
             const error = new Error('Ошибка')
-            error.data = error
+            error.data = e
             throw error
         })
     })
